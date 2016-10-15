@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Case Methods Example</title>
+    <script type="text/javascript">
+    
+        var stringValue = "hello world";
+        alert(stringValue.toLocaleUpperCase());  //"HELLO WORLD"
+        alert(stringValue.toUpperCase());        //"HELLO WORLD"
+        alert(stringValue.toLocaleLowerCase());  //"hello world"
+        alert(stringValue.toLowerCase());        //"hello world"
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type fromCharCode() Example</title>
+    <script type="text/javascript">
+    
+        alert(String.fromCharCode(104, 101, 108, 108, 111)); //"hello"
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Location Methods Example</title>
+    <script type="text/javascript">
+    
+        var stringValue = "hello world";
+        alert(stringValue.indexOf("o"));         //4
+        alert(stringValue.lastIndexOf("o"));     //7
+        alert(stringValue.indexOf("o", 6));         //7
+        alert(stringValue.lastIndexOf("o", 6));     //4                
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type localeCompare() Example</title>
+    <script type="text/javascript">
+    
+        var stringValue = "yellow";       
+        alert(stringValue.localeCompare("brick"));  //1
+        alert(stringValue.localeCompare("yellow")); //0
+        alert(stringValue.localeCompare("zoo"));    //-1
+      
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Manipulation Methods Example</title>
+    <script type="text/javascript">
+    
+        var stringValue = "hello world";
+        alert(stringValue.slice(3));        //"lo world"
+        alert(stringValue.substring(3));    //"lo world"
+        alert(stringValue.substr(3));       //"lo world"
+        alert(stringValue.slice(3, 7));     //"lo w"
+        alert(stringValue.substring(3,7));  //"lo w"
+        alert(stringValue.substr(3, 7));    //"lo worl"
+        
+        alert(stringValue.slice(-3));         //"rld"
+        alert(stringValue.substring(-3));     //"hello world"
+        alert(stringValue.substr(-3));        //"rld"
+        alert(stringValue.slice(3, -4));      //"lo w"
+        alert(stringValue.substring(3, -4));  //"hel"
+        alert(stringValue.substr(3, -4));     //"" (empty string)
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Location Methods Example 2</title>
+    <script type="text/javascript">
+    
+        var stringValue = "Lorem ipsum dolor sit amet, consectetur adipisicing elit";
+        var positions = new Array();
+        var pos = stringValue.indexOf("e");
+        
+        while(pos > -1){
+            positions.push(pos);
+            pos = stringValue.indexOf("e", pos + 1);
+        }
+            
+        alert(positions);    //"3,24,32,35,52"
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Pattern Matching Example</title>
+    <script type="text/javascript">
+    
+        var text = "cat, bat, sat, fat"; 
+        var pattern = /.at/;
+        
+        var matches = text.match(pattern);        
+        alert(matches.index);        //0
+        alert(matches[0]);           //"cat"
+        alert(pattern.lastIndex);    //0
+
+        var pos = text.search(/at/);
+        alert(pos);   //1
+
+        var result = text.replace("at", "ond");
+        alert(result);    //"cond, bat, sat, fat"
+
+        result = text.replace(/at/g, "ond");
+        alert(result);    //"cond, bond, sond, fond"
+
+        result = text.replace(/(.at)/g, "word ($1)");
+        alert(result);    //word (cat), word (bat), word (sat), word (fat)
+        
+        function htmlEscape(text){
+            return text.replace(/[<>"&]/g, function(match, pos, originalText){
+                switch(match){
+                    case "<":
+                        return "&lt;";
+                    case ">":
+                        return "&gt;";
+                    case "&":
+                        return "&amp;";
+                    case "\"":
+                        return "&quot;";
+                }             
+            });
+        }
+        
+        alert(htmlEscape("<p class=\"greeting\">Hello world!</p>")); //&lt;p class=&quot;greeting&quot;&gt;Hello world!&lt;/p&gt;
+
+        var colorText = "red,blue,green,yellow";
+        var colors1 = colorText.split(",");      //["red", "blue", "green", "yellow"]
+        var colors2 = colorText.split(",", 2);   //["red", "blue"]
+        var colors3 = colorText.split(/[^\,]+/); //["", ",", ",", ",", ""]
+
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

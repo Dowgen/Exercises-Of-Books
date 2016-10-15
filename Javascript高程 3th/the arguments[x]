@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Example 5</title>
+    <script type="text/javascript">
+        function sayHi() {
+            alert("Hello " + arguments[0] + ", " + arguments[1]);
+        }
+
+        sayHi("Nicholas", "how are you today?");
+
+        function howManyArgs() {
+            alert(arguments.length);
+        }
+        
+        howManyArgs("string", 45);    //2
+        howManyArgs();                //0
+        howManyArgs(12);              //1
+
+        function doAdd1() {
+            if(arguments.length == 1) {
+                alert(arguments[0] + 10);
+            } else if (arguments.length == 2) {
+                alert(arguments[0] + arguments[1]);
+            }
+        }
+        
+        doAdd1(10);        //20
+        doAdd1(30, 20);    //50
+
+         function doAdd2(num1, num2) {
+            if(arguments.length == 1) {
+                alert(num1 + 10);
+            } else if (arguments.length == 2) {
+                alert(arguments[0] + num2);
+            }
+        }
+
+        /* PS: doAdd2 和 doAdd1 功能是一模一样的 */
+        
+        doAdd2(10);        //20
+        doAdd2(30, 20);    //50
+
+        function doAdd3(num1, num2) {
+            //if(arguments.length == 1) {
+                arguments[1] = 10;
+            //}
+            alert(arguments[0] + num2);
+        }
+
+        doAdd3(10, 20);    //20
+        doAdd3(30, 20);    //40
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

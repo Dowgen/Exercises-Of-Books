@@ -1,0 +1,37 @@
+/*
+    typeof() 主要用于检测基本类型
+   检测引用类型时（即检测对象时）它只会返回Object，检测函数时它会返回Function。
+*/
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>typeof Example</title>
+    <script type="text/javascript">
+          
+        var message = "some string";
+        alert(typeof message);    //"string"
+        alert(typeof 95);         //"number"
+
+
+        var s = "Nicholas";
+        var b = true;
+        var i = 22;
+        var u;
+        var n = null;
+        var o = new Object();
+        
+        alert(typeof s);   //string
+        alert(typeof i);   //number
+        alert(typeof b);   //Boolean
+        alert(typeof u);   //undefined
+        alert(typeof n);   //object
+        alert(typeof o);   //object
+      
+    </script>
+
+</head>
+<body>
+  
+</body>
+</html>

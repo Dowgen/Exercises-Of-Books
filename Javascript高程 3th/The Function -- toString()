@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Example 1</title>
+    <script type="text/javascript">
+    /*  1  */      
+        var age = 11;
+        var ageAsString = age.toString();    //the string "11"
+        var found = true;
+        var foundAsString = found.toString(); //the string "true"
+
+        alert(ageAsString);
+        alert(typeof ageAsString);
+        alert(foundAsString);
+        alert(typeof foundAsString);
+        
+    /*  2  */ 
+        var num = 10;
+        alert(num.toString());       //"10"
+        alert(num.toString(2));      //"1010"
+        alert(num.toString(8));      //"12"
+        alert(num.toString(10));     //"10"
+        alert(num.toString(16));     //"a"
+
+    </script>
+
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,154 @@
+1.工厂模式
+  概念：用函数来封装“new Object + 动态创建对象属性”
+  例：
+    function createPerson(name, age, job)
+    {     
+        var o = new Object();     
+        o.name = name;     
+        o.age = age;     
+        o.job = job;     
+        o.sayName = function()
+        {         
+            alert(this.name);     
+        };         
+            return o; 
+    } 
+ 
+    var person1 = createPerson("Nicholas", 29, "Software Engineer"); 
+    var person2 = createPerson("Greg", 27, "Doctor");
+
+  它的问题：它只是用函数创建了一个能用的对象，却无法知道一个对象的类型。
+
+-------------------------------------------------------------------------------------
+2.构造函数模式
+  概念：把 1-工厂模式里的函数改造成构造函数。
+  例：
+    function Person(name, age, job)
+    {          
+        this.name = name;     
+        this.age = age;     
+        this.job = job;     
+        this.sayName = function()
+        {         
+            alert(this.name);     
+        };         
+    } 
+ 
+    var person1 = new Person("Nicholas", 29, "Software Engineer"); 
+    var person2 = new Person("Greg", 27, "Doctor");
+
+  它的问题：每个函数在每个实例上都要重新创建一遍
+
+-------------------------------------------------------------------------------------
+3.原型模式
+  概念：构造函数里不放东西，全放在原型里。
+
+  它的问题：a.省略了为构造函数传递初始化参数这一环节，结果所有实例在 默认情况下都将取得相同的属性值
+           b.a.所有实例共享原型里的"引用类型"的值（因为
+                引用类型的值在堆区，而原型把值复制给实例时，给它们的是指向该堆区的指针）
+               因此当引用类型的值改变所有实例都受到影响
+
+-------------------------------------------------------------------------------------
+             ★★★★目前自定义类型的默认模式★★★★
+
+4.组合模式（构造函数模式+原型模式）  
+  概念：构造函数模式用于定义实 例属性，而原型模式用于定义方法和共享的属性
+  例：
+    function Person(name, age, job){     
+        this.name = name;     
+        this.age = age;     
+        this.job = job;     
+        this.friends = ["Shelby", "Court"]; 
+    } 
+ 
+    Person.prototype = {     
+        constructor : Person,     
+        sayName : function(){         
+            alert(this.name);     
+        } 
+    } 
+ 
+    var person1 = new Person("Nicholas", 29, "Software Engineer"); 
+    var person2 = new Person("Greg", 27, "Doctor"); 
+ 
+    person1.friends.push("Van"); 
+    alert(person1.friends);    //"Shelby,Count,Van" 
+    alert(person2.friends);    //"Shelby,Count" 
+    alert(person1.friends === person2.friends);    //false 
+    alert(person1.sayName === person2.sayName);    //true 
+
+     
+-------------------------------------------------------------------------------------
+
+5.动态原型模式
+  概念：它把所有信息都封装在了构造函数中，但是通过 “if” 语句控制不想重复定义的方法。
+  例：
+    function Person(name, age, job)
+    {  
+        //属性     
+        this.name = name;     
+        this.age = age;     
+        this.job = job;
+
+        //方法     
+        if (typeof this.sayName != "function")
+        {              
+            Person.prototype.sayName = function()
+            {             
+                alert(this.name);         
+            };              
+        } 
+    } 
+ 
+    var friend = new Person("Nicholas", 29, "Software Engineer"); 
+    friend.sayName(); 
+
+  它的问题：使用动态原型模式时，不能使用对象字面量重写原型，否则会切断现有实例与新原型之间的联系。
+            （因为新原型会有新指针，旧实例的老指针变成野指针了。。。）
+
+-------------------------------------------------------------------------------------
+6.寄生构造函数模式
+  概念：除了用new创建实例外，跟工厂模式一模一样
+  例：
+    function Person(name, age, job){     
+        var o = new Object();     
+        o.name = name;     
+        o.age = age;     
+        o.job = job;     
+        o.sayName = function(){         
+            alert(this.name);     
+        };         
+        return o; 
+    } 
+ 
+    var friend = new Person("Nicholas", 29, "Software Engineer"); 
+    friend.sayName();  //"Nicholas" 
+
+  它的问题：无法知道对象的类型，跟工厂模式一样。
+
+  所以这寄生构造存在的意义是？？？？？？？？？？？？？？？？？？
+
+
+-------------------------------------------------------------------------------------
+                 ★★★★适合在有安全需求时使用★★★★
+7.稳妥构造函数模式
+  概念：没有公共属性，而且其方法也不引用 this 的对象。
+  特殊功能：可防止数据被其他应用程序（为什么？？？？）
+  例：
+    function Person(name, age, job){     
+        var o = new Object();     
+        o.name = name;     
+        o.age = age;     
+        o.job = job;     
+        o.sayName = function(){         
+            alert(name);    //和寄生构造的区别一：不用this！ 
+        };         
+        return o; 
+    } 
+ 
+    var friend = Person("Nicholas", 29, "Software Engineer"); //和寄生构造的区别二：不用new！
+    friend.sayName();  //"Nicholas" 
+   
+   它的问题：无法知道对象的类型，跟工厂模式一样。
+
+

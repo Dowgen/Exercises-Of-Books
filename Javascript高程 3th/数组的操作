@@ -1,0 +1,55 @@
+/*
+    concat()：拼接
+    slice() ：剪切
+    splice()：多功能 (第一个参数：起始位置；第二个参数：要删除的项数；后面参数都为要插入的数据)
+    join()  ：替换间隔符
+  PS:前两者不修改原数组，后两者修改
+*/
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Type Concat Example</title>
+    <script type="text/javascript">
+    
+    /* concat() */
+        var colors = ["red", "green", "blue"];
+        var colors2 = colors.concat("yellow", ["black", "brown"]);
+        
+        alert(colors);     //red,green,blue        
+        alert(colors2);    //red,green,blue,yellow,black,brown
+
+    /* slice() */
+        var colors = ["red", "green", "blue", "yellow", "purple"];
+        var colors2 = colors.slice(1);
+        var colors3 = colors.slice(1,4);
+        
+        alert(colors2);   //green,blue,yellow,purple
+        alert(colors3);   //green,blue,yellow
+
+    /* splice() */
+        var colors = ["red", "green", "blue"];
+        var removed = colors.splice(0,1);              //remove the first item
+        alert(colors);     //green,blue
+        alert(removed);    //red - one item array
+        
+        removed = colors.splice(1, 0, "yellow", "orange");  //insert two items at position 1
+        alert(colors);     //green,yellow,orange,blue
+        alert(removed);    //empty array
+
+        removed = colors.splice(1, 1, "red", "purple");    //insert two values, remove one
+        alert(colors);     //green,red,purple,orange,blue
+        alert(removed);    //yellow - one item array
+
+    /* join() */
+        var colors = ["red", "green", "blue"];
+        alert(colors.join(","));      //red,green,blue
+        alert(colors.join("||"));     //red||green||blue
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

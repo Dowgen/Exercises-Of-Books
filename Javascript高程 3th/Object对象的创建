@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object Type Example 1</title>
+    <script type="text/javascript">
+
+    /* new完了再添加成员 */
+        var person = new Object();
+        person.name = "Nicholas";
+        person.age = 29;
+
+        alert(person.name);
+        alert(person.age);
+
+    /* 对象字面量 */
+        var person = {
+            name : "Nicholas",
+            age : 29
+        };
+
+        alert(person.name);
+        alert(person.age);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

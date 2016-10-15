@@ -1,0 +1,52 @@
+/*
+    友情提示：在javascript中所有的对象都具有toLocaleString()、toString()和valueOf()方法。
+
+    1.调用 数组的 toString()方法会返回由数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串
+      调用 valueOf()返回的还是数组
+
+    2.toLocalString()主要用来转换本地日期用的...
+*/
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Type Example 7</title>
+    <script type="text/javascript">
+       
+    /* 1 */    
+        var colors = ["red", "blue", "green"];    //creates an array with three strings
+        alert(colors.toString());    //red,blue,green
+        alert(colors.valueOf());     //red,blue,green
+        alert(colors);               //red,blue,green
+
+    /* 2 */
+        var person1 = {
+            toLocaleString : function () {
+                return "Nikolaos";
+            },
+            
+            toString : function() {
+                return "Nicholas";
+            }
+        };
+        
+        var person2 = {
+            toLocaleString : function () {
+                return "Grigorios";
+            },
+            
+            toString : function() {
+                return "Greg";
+            }
+        };
+        
+        var people = [person1, person2];
+        alert(people);                      //Nicholas,Greg
+        alert(people.toString());           //Nicholas,Greg
+        alert(people.toLocaleString());     //Nikolaos,Grigorios
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

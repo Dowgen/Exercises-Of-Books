@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For-In Statement Example 1</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var person = new Object();
+        person.name = "Dowgen";
+        person.age = 24;
+        person.just = "handsome";
+
+        for (var propName in person) {
+             document.write(propName);
+             document.write("<br />");
+        }
+
+
+    </script>
+</body>
+</html>
